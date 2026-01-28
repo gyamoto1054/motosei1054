@@ -181,7 +181,7 @@ function Header() {
           <img 
             src="./logo.png" 
             alt="Motosei Logo" 
-            style={{ height: '40px', width: 'auto' }} 
+            style={{ height: '60px', width: 'auto' }} 
           />
         </Link>
 
