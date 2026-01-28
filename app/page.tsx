@@ -4,6 +4,7 @@ import React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { 
   Menu, 
   X, 
@@ -20,7 +21,14 @@ import {
   Briefcase,
   Phone, 
   MapPin, 
-  Building2 
+  Building2,
+  Heart,
+  Rocket,
+  Mail,
+  ExternalLink,
+  Sparkles,
+  Zap,
+  Target
 } from "lucide-react"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -169,8 +177,15 @@ function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight text-foreground">
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="本山製作所 ロゴ"
+            width={48}
+            height={48}
+            className="w-10 h-10 md:w-12 md:h-12 object-contain"
+          />
+          <span className="text-lg md:text-xl font-bold tracking-tight text-foreground">
             有限会社本山製作所
           </span>
         </Link>
@@ -229,31 +244,56 @@ function Header() {
 // ========================================
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-primary text-primary-foreground overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-foreground via-foreground/95 to-foreground/90 text-background overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl" />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
         }} />
+        
+        {/* Floating Icons */}
+        <div className="absolute top-1/3 left-1/4 opacity-20 animate-pulse">
+          <Sparkles className="w-8 h-8" />
+        </div>
+        <div className="absolute top-1/2 right-1/4 opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}>
+          <Zap className="w-6 h-6" />
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 opacity-20 animate-pulse" style={{ animationDelay: '1s' }}>
+          <Target className="w-7 h-7" />
+        </div>
       </div>
       
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-20">
-        <p className="text-sm tracking-widest uppercase mb-6 opacity-80">
-          Web制作 × デジタルマーケティング
-        </p>
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-background/10 backdrop-blur-sm border border-background/20 rounded-full px-4 py-2 mb-8">
+          <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+          <span className="text-sm tracking-wide text-background/80">Web制作 × デジタルマーケティング</span>
+        </div>
+        
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-8 text-balance">
-          ビジネスを加速する
+          <span className="bg-gradient-to-r from-background via-background to-background/80 bg-clip-text">
+            ビジネスを加速する
+          </span>
           <br />
-          <span className="text-primary-foreground/90">Web戦略</span>
+          <span className="bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent">
+            Web戦略
+          </span>
         </h1>
-        <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-12 leading-relaxed">
           LLMO対策とHP制作を融合し、AI時代に合った集客戦略を支援します。
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             asChild 
             size="lg" 
-            className="rounded-full bg-background text-foreground hover:bg-background/90 px-8"
+            className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 px-8 shadow-lg shadow-accent/25"
           >
             <Link href="#services">
               サービスを見る
@@ -264,19 +304,35 @@ function HeroSection() {
             asChild 
             variant="outline" 
             size="lg" 
-            className="rounded-full border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 bg-transparent"
+            className="rounded-full border-background/30 text-background hover:bg-background/10 px-8 bg-transparent backdrop-blur-sm"
           >
             <Link href="/contact">
               お問い合わせ
             </Link>
           </Button>
         </div>
+        
+        {/* Stats */}
+        <div className="flex flex-wrap justify-center gap-8 md:gap-16 mt-16 pt-16 border-t border-background/10">
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-background">60+</p>
+            <p className="text-sm text-background/50 mt-1">年の実績</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-background">100%</p>
+            <p className="text-sm text-background/50 mt-1">品質へのこだわり</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-background">AI</p>
+            <p className="text-sm text-background/50 mt-1">時代対応</p>
+          </div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-primary-foreground/50 rounded-full" />
+        <div className="w-6 h-10 border-2 border-background/30 rounded-full flex justify-center pt-2">
+          <div className="w-1 h-3 bg-background/50 rounded-full" />
         </div>
       </div>
     </section>
@@ -331,6 +387,65 @@ function StrengthSection() {
               </div>
               <h3 className="font-semibold text-foreground mb-2">ワンストップ対応</h3>
               <p className="text-sm text-muted-foreground">制作から運用までトータルサポート</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ========================================
+// Vision Section Component
+// ========================================
+function VisionSection() {
+  return (
+    <section className="py-24 md:py-32 bg-background">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-4">
+            Our Vision
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            私たちのビジョン
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            事業を通じて、日本社会に貢献していきます。
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Vision 1 */}
+          <div className="group relative overflow-hidden bg-gradient-to-br from-foreground to-foreground/90 text-background rounded-2xl p-8 md:p-10">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 bg-background/10 rounded-full flex items-center justify-center mb-6">
+                <Rocket className="w-7 h-7 text-background" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold mb-4 leading-tight">
+                日本を活気付かせる
+              </h3>
+              <p className="text-background/70 leading-relaxed">
+                個人事業主から中小零細企業の廃業、倒産を防げるように支援をして、日本を活気付かせたい。
+                私たちは、事業者様の集客課題を解決し、持続可能な成長をサポートすることで、日本経済の活性化に貢献します。
+              </p>
+            </div>
+          </div>
+
+          {/* Vision 2 */}
+          <div className="group relative overflow-hidden bg-gradient-to-br from-accent to-accent/90 text-accent-foreground rounded-2xl p-8 md:p-10">
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-background/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+            <div className="relative z-10">
+              <div className="w-14 h-14 bg-accent-foreground/10 rounded-full flex items-center justify-center mb-6">
+                <Heart className="w-7 h-7 text-accent-foreground" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold mb-4 leading-tight">
+                働き方の多様性を支援
+              </h3>
+              <p className="text-accent-foreground/80 leading-relaxed">
+                子育て世代やシングルで子育てをしている方に、時間に捕らわれず、稼げる環境を作ります。
+                代理店制度を通じて、場所や時間を選ばない新しい働き方を実現し、家庭と仕事の両立を応援します。
+              </p>
             </div>
           </div>
         </div>
@@ -513,11 +628,17 @@ function AboutSection() {
               </div>
               <div className="flex gap-4 pb-6 border-b border-border">
                 <span className="text-sm font-medium text-foreground w-28 shrink-0">URL</span>
-                <span className="text-sm text-muted-foreground">&nbsp;</span>
+                <a href="https://motosei.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-accent hover:underline flex items-center gap-1">
+                  https://motosei.com/
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
               <div className="flex gap-4">
                 <span className="text-sm font-medium text-foreground w-28 shrink-0">メールアドレス</span>
-                <span className="text-sm text-muted-foreground">&nbsp;</span>
+                <a href="mailto:info@motosei.com" className="text-sm text-accent hover:underline flex items-center gap-1">
+                  info@motosei.com
+                  <Mail className="w-3 h-3" />
+                </a>
               </div>
             </div>
           </div>
@@ -535,12 +656,28 @@ function AboutSection() {
               個人事業主様から中小零細企業様を対象に、Webを活用した集客・販促を総合的に支援いたします。
             </p>
             <div className="relative">
-              <div className="aspect-[4/3] bg-primary rounded-lg overflow-hidden">
+              <div className="aspect-[4/3] bg-gradient-to-br from-foreground via-foreground/95 to-foreground/85 rounded-2xl overflow-hidden shadow-2xl">
+                {/* Decorative Elements */}
+                <div className="absolute inset-0">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent/30 rounded-full blur-3xl" />
+                  <div className="absolute bottom-0 left-0 w-40 h-40 bg-accent/20 rounded-full blur-3xl" />
+                  <div className="absolute inset-0 opacity-5" style={{
+                    backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+                    backgroundSize: '30px 30px'
+                  }} />
+                </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-primary-foreground">
-                    <p className="text-sm tracking-widest uppercase mb-2 opacity-60">Since</p>
-                    <p className="text-6xl md:text-7xl font-bold">1962</p>
-                    <p className="text-sm mt-2 opacity-60">信頼と実績の歴史</p>
+                  <div className="text-center text-background relative z-10">
+                    <div className="inline-flex items-center gap-2 bg-background/10 backdrop-blur-sm rounded-full px-4 py-1 mb-4">
+                      <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                      <span className="text-xs tracking-widest uppercase opacity-80">Since</span>
+                    </div>
+                    <p className="text-6xl md:text-7xl font-bold bg-gradient-to-b from-background to-background/70 bg-clip-text text-transparent">1962</p>
+                    <p className="text-sm mt-4 opacity-60">60年以上の信頼と実績</p>
+                    <div className="flex justify-center gap-4 mt-6">
+                      <div className="w-12 h-1 bg-accent/50 rounded-full" />
+                      <div className="w-4 h-1 bg-accent/30 rounded-full" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -646,6 +783,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <StrengthSection />
+        <VisionSection />
         <PartnerBannerSection />
         <ServicesSection />
         <FeaturesSection />
