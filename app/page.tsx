@@ -180,13 +180,12 @@ function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
-            alt="本山製作所 ロゴ"
+            alt="Motosei"
             width={48}
             height={48}
             className="w-10 h-10 md:w-12 md:h-12 object-contain"
           />
           <span className="text-lg md:text-xl font-bold tracking-tight text-foreground">
-            有限会社本山製作所
           </span>
         </Link>
 
