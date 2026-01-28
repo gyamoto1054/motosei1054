@@ -11,7 +11,7 @@ const notoSansJP = Noto_Sans_JP({
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: '有限会社本山製作所 | Web制作・LLMO対策・デジタルマーケティング',
+  title: 'motosei.com | B2Bマーケティング・Web開発支援',
   description: 'HP・LP制作、SEO・MEO・LLMO対策、広告運用、集客支援を提供。製造業のルーツを持つ信頼のWeb事業パートナー。販売代理店も募集中。',
   generator: 'v0.app',
   icons: {
