@@ -177,16 +177,12 @@ function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/logo.png"
-            alt="Motosei"
-            width={48}
-            height={48}
-            className="w-10 h-10 md:w-12 md:h-12 object-contain"
+        <Link href="/" className="flex items-center">
+          <img 
+            src="./logo.png" 
+            alt="Motosei Logo" 
+            style={{ height: '40px', width: 'auto' }} 
           />
-          <span className="text-lg md:text-xl font-bold tracking-tight text-foreground">
-          </span>
         </Link>
 
         {/* Desktop Navigation */}
