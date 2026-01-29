@@ -53,87 +53,60 @@ export function PartnerCTA() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="partner-company">会社名・屋号</Label>
-                  <Input 
-                    id="partner-company" 
-                    placeholder="株式会社〇〇" 
-                    required 
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="partner-name">お名前</Label>
-                  <Input 
-                    id="partner-name" 
-                    placeholder="山田 太郎" 
-                    required 
-                  />
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="partner-email">メールアドレス</Label>
-                  <Input 
-                    id="partner-email" 
-                    type="email" 
-                    placeholder="example@company.co.jp" 
-                    required 
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="partner-phone">電話番号</Label>
-                  <Input 
-                    id="partner-phone" 
-                    type="tel" 
-                    placeholder="03-XXXX-XXXX" 
-                    required 
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="partner-type">事業形態</Label>
-                <Select required>
-                  <SelectTrigger id="partner-type">
-                    <SelectValue placeholder="選択してください" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="corporation">法人</SelectItem>
-                    <SelectItem value="sole-proprietor">個人事業主</SelectItem>
-                    <SelectItem value="side-business">副業（会社員）</SelectItem>
-                    <SelectItem value="other">その他</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="partner-experience">現在の事業内容・営業経験</Label>
-                <Textarea 
-                  id="partner-experience" 
-                  placeholder="現在の事業内容やWeb関連の営業経験についてお聞かせください" 
-                  rows={4}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="partner-message">ご質問・ご要望</Label>
-                <Textarea 
-                  id="partner-message" 
-                  placeholder="その他ご質問やご要望があればご記入ください" 
-                  rows={3}
-                />
-              </div>
-              <Button 
-                type="submit" 
-                size="lg"
-                className="w-full rounded-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "送信中..." : "代理店に応募する"}
-              </Button>
-              <p className="text-xs text-center text-muted-foreground">
-                ※ お送りいただいた情報は、代理店契約のご案内以外の目的には使用いたしません。
-              </p>
-            </form>
+     <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+  {/* Web3Formsのアクセスキー */}
+  <input type="hidden" name="access_key" value="b0370816-a709-4725-85c6-58fd97cc540d" />
+  
+  <div className="grid sm:grid-cols-2 gap-4">
+    <div className="space-y-2">
+      <Label htmlFor="partner-company">会社名・屋号</Label>
+      <Input id="partner-company" name="company" placeholder="株式会社〇〇" required />
+    </div>
+    <div className="space-y-2">
+      <Label htmlFor="partner-name">お名前</Label>
+      <Input id="partner-name" name="name" placeholder="山田 太郎" required />
+    </div>
+  </div>
+
+  <div className="grid sm:grid-cols-2 gap-4">
+    <div className="space-y-2">
+      <Label htmlFor="partner-email">メールアドレス</Label>
+      <Input id="partner-email" name="email" type="email" placeholder="example@company.co.jp" required />
+    </div>
+    <div className="space-y-2">
+      <Label htmlFor="partner-phone">電話番号</Label>
+      <Input id="partner-phone" name="tel" type="tel" placeholder="03-XXXX-XXXX" required />
+    </div>
+  </div>
+
+  <div className="space-y-2">
+    <Label htmlFor="partner-experience">現在の事業内容・営業経験</Label>
+    <Textarea 
+      id="partner-experience" 
+      name="experience"
+      placeholder="現在の事業内容やWeb関連の営業経験についてお聞かせください" 
+      rows={4}
+    />
+  </div>
+
+  <div className="space-y-2">
+    <Label htmlFor="partner-message">ご質問・ご要望</Label>
+    <Textarea 
+      id="partner-message" 
+      name="message"
+      placeholder="その他ご質問やご要望があればご記入ください" 
+      rows={3}
+    />
+  </div>
+
+  <Button type="submit" size="lg" className="w-full rounded-full">
+    代理店に応募する
+  </Button>
+
+  <p className="text-xs text-center text-muted-foreground">
+    ※ お送りいただいた情報は、代理店契約のご案内以外の目的には使用いたしません。
+  </p>
+</form>
           )}
         </div>
       </div>
