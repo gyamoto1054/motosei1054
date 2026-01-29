@@ -85,42 +85,45 @@ export function ContactForm() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="company">会社名</Label>
-                    <Input id="company" placeholder="株式会社〇〇" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="name">お名前</Label>
-                    <Input id="name" placeholder="山田 太郎" required />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">メールアドレス</Label>
-                  <Input id="email" type="email" placeholder="example@company.co.jp" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">電話番号</Label>
-                  <Input id="phone" type="tel" placeholder="090-XXXX-XXXX" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">お問い合わせ内容</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="ご質問やご要望をご記入ください" 
-                    rows={5}
-                    required 
-                  />
-                </div>
-                <Button 
-                  type="submit" 
-                  className="w-full rounded-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "送信中..." : "送信する"}
-                </Button>
-              </form>
+       <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+  {/* Web3Formsのアクセスキー */}
+  <input type="hidden" name="access_key" value="b0370816-a709-4725-85c6-58fd97cc540d" />
+
+  <div className="grid sm:grid-cols-2 gap-4">
+    <div className="space-y-2">
+      <Label htmlFor="company">会社名</Label>
+      <Input id="company" name="company" placeholder="株式会社〇〇" required />
+    </div>
+    <div className="space-y-2">
+      <Label htmlFor="name">お名前</Label>
+      <Input id="name" name="name" placeholder="山田 太郎" required />
+    </div>
+  </div>
+  <div className="space-y-2">
+    <Label htmlFor="email">メールアドレス</Label>
+    <Input id="email" name="email" type="email" placeholder="example@company.co.jp" required />
+  </div>
+  <div className="space-y-2">
+    <Label htmlFor="phone">電話番号</Label>
+    <Input id="phone" name="phone" type="tel" placeholder="090-XXXX-XXXX" />
+  </div>
+  <div className="space-y-2">
+    <Label htmlFor="message">お問い合わせ内容</Label>
+    <Textarea 
+      id="message" 
+      name="message" 
+      placeholder="ご質問やご要望をご記入ください" 
+      rows={5}
+      required 
+    />
+  </div>
+  <Button 
+    type="submit" 
+    className="w-full rounded-full"
+  >
+    送信する
+  </Button>
+</form>
             )}
           </div>
         </div>
